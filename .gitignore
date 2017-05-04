@@ -1,0 +1,10 @@
+*.suo
+*.sln
+*.csproj
+*ShaderCache*
+*bin
+*obj
+Temp
+Library
+Tetris Clone_Data
+*.exe
