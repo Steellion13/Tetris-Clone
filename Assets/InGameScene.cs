@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class InGameScene : MonoBehaviour {
 
     public Button quit;
+    public Button pause;
     public static int lines;
     public static int level;
     public static int score;
     public Text display;
     public Text nextpiece;
     public Text gameovertext;
+    public Text pausetext;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class InGameScene : MonoBehaviour {
         quit.transform.position = new Vector3(Screen.width * 0.975f, Screen.height * 0.95f);
         gameovertext.transform.position = new Vector3(Screen.width / 2, Screen.height / 2);
         gameovertext.text = null;
+        pause.transform.position = new Vector3(Screen.width * 0.925f, Screen.height * 0.95f);
+        pausetext.text = "Pause";
     }
 
 	void Update()
@@ -48,6 +52,20 @@ public class InGameScene : MonoBehaviour {
         }
         yield return new WaitForSeconds(7);
         SceneManager.LoadScene("End");
+    }
+
+    public void PauseResume()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            pausetext.text = "Pause";
+        }
+        else
+        {
+            pausetext.text = "Resume";
+            Time.timeScale = 0;
+        }
     }
 
     public void Quit()
